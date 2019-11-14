@@ -51,7 +51,7 @@ Person.prototype.eat = function() {
 Person.prototype.poop = function() {
   this.stomach = [];
 }
-Person.prototype.toString = function(name, age) {
+Person.prototype.toString = function() {
   return `${this.name}, ${this.age}`
 }
 
@@ -82,9 +82,9 @@ Car.prototype.fill = function(gallons) {
 
 
 Car.prototype.drive = function(distance) {
-  const milesUntilEmpty = this.tank * this.milesPerGallon;
-  if (distance > milesUntilEmpty) {
-    this.odometer += milesUntilEmpty;
+  const milesLeft = this.tank * this.milesPerGallon;
+  if (distance >= milesLeft) {
+    this.odometer += milesLeft;
     this.tank = 0;
     return `I ran out of fuel at ${this.odometer} miles!`;
   }
@@ -100,7 +100,7 @@ Car.prototype.drive = function(distance) {
         + Should return a string "Playing with x", x being the favorite toy.
 */
 function Baby(name, age, favoriteToy) {
-  Person.call(this, name, age, favoriteToy);
+  Person.call(this, name, age);
   this.favoriteToy = favoriteToy;
 }
 
